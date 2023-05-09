@@ -1,7 +1,7 @@
 .SILENT:
 
 build:
-	GOPATH=$(PWD) go build -o ./.bin/main ./cmd/main
+	GOPATH=$(PWD) go build -o ./.bin/bot cmd/bot/main.go
 
 run: build
 	./.bin/main

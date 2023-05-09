@@ -1,15 +1,17 @@
-FROM golang:1.15-alpine3.12 AS builder
+FROM golang:1.20.4-alpine3.16 AS builder
 
 COPY . /github.com/ChingizAdamov/test_work/
-WORKDIR  /github.com/ChingizAdamov/test_work/
+WORKDIR /github.com/ChingizAdamov/test_work/
 
 RUN go mod download
-RUN go build -o ./bin/main cmd/main/main.go
+RUN go build -o ./bin/bot cmd/bot/main.go
 
 FROM alpine:latest
 
-WORKDIR --from=0 /github.com/ChingizAdamov/test_work/bin/main .
+WORKDIR /root/
+
+COPY --from=0 /github.com/ChingizAdamov/test_work/bin/bot .
 
 EXPOSE 80
 
-CMD ["./main"]
+CMD ["./bot"]
