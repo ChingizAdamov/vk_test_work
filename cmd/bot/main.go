@@ -46,7 +46,7 @@ func (us *UserStorage) Delete(userID int64) {
 }
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI("6023164955:AAHgDhUulJMkdlpDxKQzxrvn0c_ZNNQxDHM")
+	bot, err := tgbotapi.NewBotAPI("TOKEN")
 	if err != nil {
 		log.Panic(err)
 	}
